@@ -13,6 +13,20 @@ export default function WelcomePopup({
   const [show, setShow] = useState(true);
   const particles = Array.from({ length: 20 });
 
+  // 🔒 Lock scroll saat popup muncul
+  useEffect(() => {
+    if (show) {
+      document.body.style.overflow = "hidden"; // disable scroll
+    } else {
+      document.body.style.overflow = ""; // reset
+    }
+
+    return () => {
+      document.body.style.overflow = ""; // pastikan reset
+    };
+  }, [show]);
+
+  // Auto close popup
   useEffect(() => {
     const timer = setTimeout(() => setShow(false), autoClose);
     return () => clearTimeout(timer);
