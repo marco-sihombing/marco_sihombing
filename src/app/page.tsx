@@ -552,13 +552,13 @@ export default function Home() {
             {/* Social Icons */}
             <div className="flex justify-center md:justify-start gap-5 text-2xl text-gray-600 dark:text-gray-300">
               <a
-                href="mailto:marcosihombing@email.com"
+                href="mailto:marcosihombing72@email.com"
                 className="hover:text-blue-500 transition-colors duration-300"
               >
                 <FiMail />
               </a>
               <a
-                href="https://github.com/username"
+                href="https://github.com/marco-sihombing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
@@ -566,7 +566,7 @@ export default function Home() {
                 <FiGithub />
               </a>
               <a
-                href="https://linkedin.com/in/username"
+                href="https://www.linkedin.com/in/marcosihombing/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-700 transition-colors duration-300"
@@ -574,7 +574,7 @@ export default function Home() {
                 <FiLinkedin />
               </a>
               <a
-                href="https://wa.me/6281234567890"
+                href="https://wa.me/089664686245"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-green-500 transition-colors duration-300"
@@ -1088,14 +1088,14 @@ export default function Home() {
           {/* Icons */}
           <div className="flex space-x-5 text-lg">
             <a
-              href="mailto:marco@example.com"
+              href="mailto:marcosihombing72@email.com"
               className="hover:text-blue-500 transition-colors"
               aria-label="Email"
             >
               <FiMail />
             </a>
             <a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/089664686245"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-green-600 transition-colors"
@@ -1104,7 +1104,7 @@ export default function Home() {
               <FaWhatsapp />
             </a>
             <a
-              href="https://github.com/marcosihombing"
+              href="https://github.com/marco-sihombing"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-700 dark:hover:text-white transition-colors"
@@ -1113,7 +1113,7 @@ export default function Home() {
               <FiGithub />
             </a>
             <a
-              href="https://www.linkedin.com/in/marcosihombing"
+              href="https://www.linkedin.com/in/marcosihombing/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-700 transition-colors"
