@@ -13,20 +13,29 @@ export default function WelcomePopup({
   const [show, setShow] = useState(true);
   const particles = Array.from({ length: 20 });
 
-  // 🔒 Lock scroll saat popup muncul
+  // 🔒 Lock scroll di mobile & desktop
   useEffect(() => {
     if (show) {
-      document.body.style.overflow = "hidden"; // disable scroll
+      document.documentElement.style.overflow = "hidden"; // html
+      document.body.style.overflow = "hidden"; // body
+      document.body.style.position = "fixed"; // cegah scroll bounce
+      document.body.style.width = "100%";
     } else {
-      document.body.style.overflow = ""; // reset
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
     }
 
     return () => {
-      document.body.style.overflow = ""; // pastikan reset
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
     };
   }, [show]);
 
-  // Auto close popup
+  // Auto close
   useEffect(() => {
     const timer = setTimeout(() => setShow(false), autoClose);
     return () => clearTimeout(timer);
@@ -54,7 +63,7 @@ export default function WelcomePopup({
           <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-200" />
         </button>
 
-        {/* Split Text Animasi */}
+        {/* Animasi teks */}
         <div className="flex justify-center space-x-1 text-2xl sm:text-4xl font-extrabold text-gray-800 dark:text-gray-100">
           {message.split("").map((char, index) => (
             <motion.span
@@ -72,7 +81,7 @@ export default function WelcomePopup({
           {description}
         </p>
 
-        {/* Confetti Particles */}
+        {/* Confetti Particles (dibatasi biar gak bikin scrollbar) */}
         {particles.map((_, i) => (
           <motion.div
             key={i}
@@ -86,8 +95,8 @@ export default function WelcomePopup({
             }}
             initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
             animate={{
-              x: (Math.random() - 0.5) * 300,
-              y: (Math.random() - 0.5) * 300,
+              x: (Math.random() - 0.5) * 150, // 🔽 batasi max 150px
+              y: (Math.random() - 0.5) * 150,
               opacity: 0,
               scale: 0,
             }}
