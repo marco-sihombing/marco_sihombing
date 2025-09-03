@@ -38,7 +38,6 @@ export default function Home() {
   const scrollToBottom = () =>
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 
-  // Hide navbar on scroll down, show on scroll up
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
@@ -215,26 +214,31 @@ export default function Home() {
       </div>
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[calc(100vh-3.5rem)] flex items-center overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-transparent dark:from-gray-800" />
 
         {/* Content */}
-        <div className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto px-6 py-16 md:py-0">
+        <div
+          className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto 
+                  px-4 sm:px-6 
+                  pt-8 sm:pt-12 md:pt-0 
+                  pb-20 md:pb-0"
+        >
           {/* Text Side */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center md:text-left"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
               Marco Sihombing
             </h2>
-            <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">
               Backend Developer • Undergraduate
             </p>
-            <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6">
               <TypeAnimation
                 sequence={[
                   "Backend Developer",
@@ -274,7 +278,7 @@ export default function Home() {
                 <FiGithub />
               </a>
               <a
-                href="https://www.linkedin.com/in/marcosihombing/"
+                href="https://www.linkedin.com/in/marcosihombing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-700 transition-colors duration-300"
@@ -303,23 +307,26 @@ export default function Home() {
             <Image
               src="/vercel.svg"
               alt="Profile"
-              width={260}
-              height={260}
-              className="rounded-full shadow-2xl border-4 border-gray-200 dark:border-gray-700"
+              width={220}
+              height={220}
+              className="rounded-full shadow-2xl border-4 border-gray-200 dark:border-gray-700 w-40 sm:w-56 md:w-64 h-auto"
             />
           </motion.div>
         </div>
 
         {/* Scroll Down Indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 dark:text-gray-300 cursor-pointer"
+          className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 text-gray-600 dark:text-gray-300 cursor-pointer"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
         >
-          <a href="#about" className="flex flex-col items-center text-sm">
+          <a
+            href="#about"
+            className="flex flex-col items-center text-xs sm:text-sm"
+          >
             <span>Scroll Down</span>
-            <ArrowDown className="mt-1 animate-bounce" size={20} />
+            <ArrowDown className="mt-1 animate-bounce" size={18} />
           </a>
         </motion.div>
       </section>

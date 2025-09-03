@@ -1,20 +1,15 @@
 "use client";
 
+import { Welcome } from "@/interface/Welcome";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
-
-interface WelcomePopupProps {
-  message?: string; // teks utama (default "Welcome")
-  description?: string; // teks deskripsi
-  autoClose?: number; // waktu auto close dalam ms (default 3000)
-}
 
 export default function WelcomePopup({
   message = "Welcome",
   description = "Hopefully you find the worker you need.",
   autoClose = 3000,
-}: WelcomePopupProps) {
+}: Welcome) {
   const [show, setShow] = useState(true);
   const particles = Array.from({ length: 20 });
 
@@ -26,23 +21,27 @@ export default function WelcomePopup({
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 px-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
-        className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-10 w-[450px] text-center overflow-hidden transition-colors duration-300"
+        className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl 
+                   p-6 sm:p-10 w-full max-w-md text-center overflow-hidden 
+                   transition-colors duration-300"
       >
         {/* Tombol Close */}
         <button
           onClick={() => setShow(false)}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 
+                     p-1.5 sm:p-2 rounded-full 
+                     hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
         >
-          <X className="w-6 h-6 text-gray-600 dark:text-gray-200" />
+          <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-200" />
         </button>
 
         {/* Split Text Animasi */}
-        <div className="flex justify-center space-x-1 text-4xl font-extrabold text-gray-800 dark:text-gray-100">
+        <div className="flex justify-center space-x-1 text-2xl sm:text-4xl font-extrabold text-gray-800 dark:text-gray-100">
           {message.split("").map((char, index) => (
             <motion.span
               key={index}
@@ -55,7 +54,7 @@ export default function WelcomePopup({
           ))}
         </div>
 
-        <p className="mt-6 text-lg text-gray-600 dark:text-gray-300">
+        <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-300 px-2">
           {description}
         </p>
 

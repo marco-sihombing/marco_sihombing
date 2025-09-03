@@ -33,81 +33,21 @@ export default function SkillsSection() {
           {skills.map((skill, i) => (
             <SwiperSlide key={`row1-${i}`}>
               <motion.div
-                className="p-6 bg-white dark:bg-gray-700 shadow-md rounded-lg text-center"
+                className="p-6 bg-white dark:bg-gray-700 shadow-md rounded-lg text-center flex flex-col items-center justify-center"
                 whileHover={{ scale: 1.1 }}
               >
                 {skill.icon}
-                <p className="mt-3 font-semibold text-gray-800 dark:text-gray-200 text-sm">
+                <p
+                  className="mt-3 font-semibold text-gray-800 dark:text-gray-200 
+               text-sm sm:text-sm md:text-base lg:text-sm
+               break-words text-center px-2 max-w-[100px]"
+                >
                   {skill.name}
                 </p>
               </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Baris 2 - ke kanan
-        <Swiper
-          modules={[Autoplay]}
-          spaceBetween={30}
-          slidesPerView={4}
-          loop
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-            reverseDirection: true,
-          }}
-          speed={3500}
-          className="py-8"
-          breakpoints={{
-            320: { slidesPerView: 3 },
-            640: { slidesPerView: 4 },
-            1024: { slidesPerView: 6 },
-          }}
-        >
-          {skills.map((skill, i) => (
-            <SwiperSlide key={`row2-${i}`}>
-              <motion.div
-                className="p-6 bg-white dark:bg-gray-700 shadow-md rounded-lg text-center"
-                whileHover={{ scale: 1.1 }}
-              >
-                {skill.icon}
-                <p className="mt-3 font-semibold text-gray-800 dark:text-gray-200 text-sm">
-                  {skill.name}
-                </p>
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper> */}
-
-        {/* Baris 3 - ke kiri lagi
-        <Swiper
-          modules={[Autoplay]}
-          spaceBetween={30}
-          slidesPerView={4}
-          loop
-          autoplay={{ delay: 0, disableOnInteraction: false }}
-          speed={2800}
-          className="py-8"
-          breakpoints={{
-            320: { slidesPerView: 3 },
-            640: { slidesPerView: 4 },
-            1024: { slidesPerView: 6 },
-          }}
-        >
-          {skills.map((skill, i) => (
-            <SwiperSlide key={`row3-${i}`}>
-              <motion.div
-                className="p-6 bg-white dark:bg-gray-700 shadow-md rounded-lg text-center"
-                whileHover={{ scale: 1.1 }}
-              >
-                {skill.icon}
-                <p className="mt-3 font-semibold text-gray-800 dark:text-gray-200 text-sm">
-                  {skill.name}
-                </p>
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper> */}
       </div>
     </section>
   );
