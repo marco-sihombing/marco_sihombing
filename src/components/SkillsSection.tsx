@@ -21,7 +21,7 @@ export default function SkillsSection() {
           spaceBetween={30}
           slidesPerView={4}
           loop
-          autoplay={{ delay: 0, disableOnInteraction: false }}
+          autoplay={{ delay: 1, disableOnInteraction: false }}
           speed={3000}
           className="py-8"
           breakpoints={{

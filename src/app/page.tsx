@@ -140,7 +140,7 @@ export default function Home() {
 
           {/* Button CV (lebih kecil & proporsional) */}
           <a
-            href="/cv.pdf"
+            href="/pdf/Marco-Sihombing.pdf"
             className="px-3 py-1.5 rounded-md bg-gradient-to-r from-blue-600 to-purple-600 
       text-white font-medium shadow-md hover:shadow-lg hover:scale-105 
       active:scale-95 transition-transform duration-300 text-sm"
@@ -185,7 +185,11 @@ export default function Home() {
           Contact
         </a>
         {/* Tambahan Unduh CV */}
-        <a href="/cv.pdf" download className="flex flex-col items-center">
+        <a
+          href="/pdf/Marco-Sihombing.pdf"
+          download
+          className="flex flex-col items-center"
+        >
           <FileDown size={18} />
           CV
         </a>
@@ -264,7 +268,7 @@ export default function Home() {
             {/* Social Icons */}
             <div className="flex justify-center md:justify-start gap-5 text-2xl text-gray-600 dark:text-gray-300">
               <a
-                href="mailto:marcosihombing72@email.com"
+                href="mailto:marcosihombing72@gmail.com"
                 className="hover:text-blue-500 transition-colors duration-300"
               >
                 <FiMail />
@@ -278,7 +282,7 @@ export default function Home() {
                 <FiGithub />
               </a>
               <a
-                href="https://www.linkedin.com/in/marcosihombing"
+                href="https://www.linkedin.com/in/marcosihombing/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-700 transition-colors duration-300"
@@ -305,7 +309,7 @@ export default function Home() {
             whileHover={{ scale: 1.05, rotate: 2 }}
           >
             <Image
-              src="/vercel.svg"
+              src="/photo1.png"
               alt="Profile"
               width={220}
               height={220}
@@ -377,7 +381,7 @@ export default function Home() {
           {/* Icons */}
           <div className="flex space-x-5 text-lg">
             <a
-              href="mailto:marcosihombing72@email.com"
+              href="mailto:marcosihombing72@gmail.com"
               className="hover:text-blue-500 transition-colors"
               aria-label="Email"
             >

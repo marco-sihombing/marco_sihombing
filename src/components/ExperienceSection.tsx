@@ -13,7 +13,7 @@ export default function ExperienceSection() {
   return (
     <section className="max-w-6xl mx-auto py-20 px-6">
       <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-        Work History & Internships
+        Work & Internships History
       </h3>
 
       <Swiper

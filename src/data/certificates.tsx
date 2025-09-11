@@ -1,18 +1,19 @@
 import { Certificate } from "@/interface/Certificate";
+
 export const certificates: Certificate[] = [
   {
-    title: "Sertifikat 1",
-    description: "Deskripsi sertifikat 1",
-    image: "/cert1.png",
+    title: "Server Side",
+    description: "certificate to become a server side at BMKG Bengkulu",
+    images: ["/certs/bmkg_2.png", "/certs/bmkg_3.png", "/certs/bmkg_1.png"],
   },
   {
-    title: "Sertifikat 2",
-    description: "Deskripsi sertifikat 2",
-    image: "/cert2.png",
+    title: "Backend Developer",
+    description: "Certification of backend specialization",
+    images: ["/certs/backend.png"],
   },
   {
-    title: "Sertifikat 3",
-    description: "Deskripsi sertifikat 3",
-    image: "/cert3.png",
+    title: "Database Management",
+    description: "Certificate of database training",
+    images: ["/certs/database.png"],
   },
 ];
