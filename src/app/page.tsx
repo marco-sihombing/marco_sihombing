@@ -32,6 +32,7 @@ import "swiper/css/pagination";
 export default function Home() {
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [overlay, setOverlay] = useState(false);
 
   // scroll to top / bottom
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -73,6 +74,12 @@ export default function Home() {
       if (forbidden) {
         e.preventDefault();
         e.stopPropagation();
+      }
+
+      if (e.key === "PrintScreen") {
+        setOverlay(true);
+        // Hilangkan overlay setelah beberapa detik
+        setTimeout(() => setOverlay(false), 2000);
       }
     };
 
@@ -142,6 +149,12 @@ export default function Home() {
           properly.
         </div>
       </noscript>
+
+      <>
+        {overlay && (
+          <div className="fixed inset-0 bg-black z-[9999] opacity-90 flex items-center justify-center"></div>
+        )}
+      </>
 
       {/* Header (desktop only) */}
       <header
