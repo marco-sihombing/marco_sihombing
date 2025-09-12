@@ -61,7 +61,7 @@ export default function Home() {
       e.preventDefault();
     };
 
-    // Disable shortcut
+    // Disable shortcut tertentu
     const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
 
@@ -81,14 +81,33 @@ export default function Home() {
       e.preventDefault();
     };
 
+    // Disable drag & drop
+    const handleDragStart = (e: DragEvent) => {
+      e.preventDefault();
+    };
+    const handleDrop = (e: DragEvent) => {
+      e.preventDefault();
+    };
+
+    // Disable text selection
+    const handleSelectStart = (e: Event) => {
+      e.preventDefault();
+    };
+
     document.addEventListener("contextmenu", handleContextMenu);
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("dblclick", handleDoubleClick);
+    document.addEventListener("dragstart", handleDragStart);
+    document.addEventListener("drop", handleDrop);
+    document.addEventListener("selectstart", handleSelectStart);
 
     return () => {
       document.removeEventListener("contextmenu", handleContextMenu);
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("dblclick", handleDoubleClick);
+      document.removeEventListener("dragstart", handleDragStart);
+      document.removeEventListener("drop", handleDrop);
+      document.removeEventListener("selectstart", handleSelectStart);
     };
   }, []);
 
@@ -99,6 +118,30 @@ export default function Home() {
         description="Hopefully you find the worker you need."
         autoClose={4000}
       />
+
+      <noscript>
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0,0,0,0.8)",
+            color: "white",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+            fontSize: "1.2rem",
+            textAlign: "center",
+            padding: "20px",
+          }}
+        >
+          JavaScript is disabled. Enable JavaScript for the website to function
+          properly.
+        </div>
+      </noscript>
 
       {/* Header (desktop only) */}
       <header
@@ -220,29 +263,34 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-[calc(100vh-3.5rem)] flex items-center overflow-hidden">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-transparent dark:from-gray-800" />
+        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-blue-50 via-white to-transparent dark:from-gray-900 dark:via-gray-800" />
 
         {/* Content */}
         <div
-          className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto 
-                  px-4 sm:px-6 
-                  pt-8 sm:pt-12 md:pt-0 
-                  pb-20 md:pb-0"
+          className="relative grid grid-cols-1 md:grid-cols-2 items-center 
+               max-w-6xl mx-auto w-full
+               px-6 sm:px-8 md:px-12 
+               gap-10 md:gap-16
+               pt-16 sm:pt-20 md:pt-0 
+               pb-28 sm:pb-32 md:pb-0"
         >
           {/* Text Side */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center md:text-left"
+            className="text-center md:text-left flex flex-col items-center md:items-start"
           >
-            <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
-              Marco Sihombing
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
+              Marco{" "}
+              <span className="text-blue-600 dark:text-blue-400">
+                Sihombing
+              </span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">
+            <p className="text-sm sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">
               Backend Developer • Undergraduate
             </p>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
               <TypeAnimation
                 sequence={[
                   "Backend Developer",
@@ -302,25 +350,31 @@ export default function Home() {
 
           {/* Image Side */}
           <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="flex justify-center md:justify-center relative -top-4"
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
             whileHover={{ scale: 1.05, rotate: 2 }}
           >
-            <Image
-              src="/photo1.png"
-              alt="Profile"
-              width={220}
-              height={220}
-              className="rounded-full shadow-2xl border-4 border-gray-200 dark:border-gray-700 w-40 sm:w-56 md:w-64 h-auto"
-            />
+            <div className="relative">
+              {/* Glow behind image */}
+              <div className="absolute inset-0 rounded-full bg-blue-400/20 blur-3xl scale-110" />
+              <Image
+                src="/photo1.png"
+                alt="Profile"
+                width={260}
+                height={260}
+                className="relative rounded-full shadow-2xl border-4 border-gray-200 dark:border-gray-700 
+                     w-44 sm:w-60 md:w-72 lg:w-[19rem] h-auto"
+                priority
+              />
+            </div>
           </motion.div>
         </div>
 
         {/* Scroll Down Indicator */}
         <motion.div
-          className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 text-gray-600 dark:text-gray-300 cursor-pointer"
+          className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 text-gray-600 dark:text-gray-300 cursor-pointer"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
@@ -378,6 +432,7 @@ export default function Home() {
             © {new Date().getFullYear()} Marco Sihombing. All rights reserved.
           </p>
 
+          {/* Icons */}
           {/* Icons */}
           <div className="flex space-x-5 text-lg">
             <a

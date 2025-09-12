@@ -7,11 +7,11 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
-// import Swiper + modul tambahan
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css/zoom";
+import { Navigation, Pagination, Zoom } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function CertificateSection() {
@@ -72,31 +72,34 @@ export default function CertificateSection() {
               {selectedCert.title}
             </h4>
 
-            {/* Mobile: pakai Swiper (carousel) */}
+            {/* Mobile: Carousel dengan Zoom */}
             <div className="block md:hidden">
               <Swiper
                 spaceBetween={16}
                 slidesPerView={1}
                 pagination={{ clickable: true }}
                 navigation
-                modules={[Pagination, Navigation]}
+                zoom={true}
+                modules={[Pagination, Navigation, Zoom]}
                 className="rounded-lg"
               >
                 {selectedCert.images.map((img, idx) => (
                   <SwiperSlide key={idx}>
-                    <Image
-                      src={img}
-                      alt={`${selectedCert.title} - ${idx + 1}`}
-                      width={500}
-                      height={400}
-                      className="rounded-lg shadow-md w-full h-auto"
-                    />
+                    <div className="swiper-zoom-container">
+                      <Image
+                        src={img}
+                        alt={`${selectedCert.title} - ${idx + 1}`}
+                        width={500}
+                        height={400}
+                        className="rounded-lg shadow-md w-full h-auto"
+                      />
+                    </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
             </div>
 
-            {/* Desktop: tetap grid */}
+            {/* Desktop: Grid biasa */}
             <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-4">
               {selectedCert.images.map((img, idx) => (
                 <Image
