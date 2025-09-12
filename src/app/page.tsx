@@ -153,7 +153,9 @@ export default function Home() {
       <>
         {overlay && (
           <div className="fixed inset-0 bg-black z-[9999] opacity-90 flex items-center justify-center">
-          <p>Sorry, but please don't take screenshots</p>
+            <p className="text-white text-lg">
+              Sorry, but please don&apos;t take screenshots
+            </p>
           </div>
         )}
       </>
