@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ export default function ContactSection() {
     message: "",
   });
   const [status, setStatus] = useState<"success" | "error" | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
@@ -22,11 +23,12 @@ export default function ContactSection() {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
+    setErrorMessage(null);
 
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
 
     try {
-      const res = await fetch("${API_URL}/email", {
+      const res = await fetch(`${API_URL}/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,16 +37,31 @@ export default function ContactSection() {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error("Gagal mengirim pesan");
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Status: ${res.status}, Response: ${text}`);
+      }
 
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-    } catch (err) {
+    } catch (err: any) {
       setStatus("error");
+      setErrorMessage(err.message || "An unexpected error occurred");
+      console.error("Error sending message:", err);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => {
+        setStatus(null);
+        setErrorMessage(null);
+      }, 3000); // 3 detik
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   return (
     <section
@@ -70,11 +87,11 @@ export default function ContactSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          {/* Input Nama */}
+          {/* Input Name */}
           <motion.input
             type="text"
             name="name"
-            placeholder="Nama"
+            placeholder="Name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -103,7 +120,7 @@ export default function ContactSection() {
           {/* Textarea Pesan */}
           <motion.textarea
             name="message"
-            placeholder="Pesan"
+            placeholder="Enter your message..."
             rows={4}
             value={formData.message}
             onChange={handleChange}
@@ -124,19 +141,21 @@ export default function ContactSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {loading ? "Mengirim..." : "Kirim"}
+            {loading ? "Sending..." : "Send"}
           </motion.button>
         </motion.form>
 
         {/* Popup Notification */}
         {status === "success" && (
           <div className="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded shadow-lg animate-bounce">
-            ✅ Pesan berhasil dikirim!
+            Message sent successfully!
           </div>
         )}
         {status === "error" && (
           <div className="fixed bottom-6 right-6 bg-red-500 text-white px-4 py-2 rounded shadow-lg animate-bounce">
-            ❌ Gagal mengirim pesan. Coba lagi.
+            Failed to send message.
+            <br />
+            <span className="text-xs">{errorMessage}</span>
           </div>
         )}
       </div>
