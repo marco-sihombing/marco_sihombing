@@ -44,10 +44,15 @@ export default function ContactSection() {
 
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus("error");
-      setErrorMessage(err.message || "An unexpected error occurred");
-      console.error("Error sending message:", err);
+      if (err instanceof Error) {
+        setErrorMessage(err.message);
+        console.error("Error sending message:", err);
+      } else {
+        setErrorMessage("An unexpected error occurred");
+        console.error("Unknown error:", err);
+      }
     } finally {
       setLoading(false);
     }
