@@ -33,6 +33,9 @@ export default function Home() {
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [overlay, setOverlay] = useState(false);
+  const [visitors, setVisitors] = useState<number | null>(null);
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
 
   // scroll to top / bottom
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -69,7 +72,7 @@ export default function Home() {
       const forbidden =
         key === "f12" ||
         (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(key)) ||
-        (e.ctrlKey && ["u", "s", "c", "v", "x"].includes(key));
+        (e.ctrlKey && ["u", "s", "c", "x"].includes(key));
 
       if (forbidden) {
         e.preventDefault();
@@ -117,6 +120,30 @@ export default function Home() {
       document.removeEventListener("selectstart", handleSelectStart);
     };
   }, []);
+
+  useEffect(() => {
+    const fetchVisitors = async () => {
+      try {
+        await fetch(`${API_URL}/visitors`, {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+          },
+        });
+
+        const res = await fetch(`${API_URL}/visitors`);
+        if (!res.ok) throw new Error("Failed to retrieve visitor data");
+        const data = await res.json();
+        setVisitors(data.total);
+      } catch (err) {
+        console.error("Error fetch visitors:", err);
+      }
+    };
+
+    if (API_URL) {
+      fetchVisitors();
+    }
+  }, [API_URL]);
 
   return (
     <main className="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
@@ -449,7 +476,17 @@ export default function Home() {
             © {new Date().getFullYear()} Marco Sihombing. All rights reserved.
           </p>
 
-          {/* Icons */}
+          {/* Visitor counter */}
+          {visitors !== null && (
+            <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
+              <span className="text-lg">👥</span>
+              <span>Total Visitors:</span>
+              <span className="font-semibold text-gray-900 dark:text-gray-100">
+                {visitors.toLocaleString()}
+              </span>
+            </p>
+          )}
+
           {/* Icons */}
           <div className="flex space-x-5 text-lg">
             <a
