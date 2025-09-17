@@ -124,16 +124,32 @@ export default function Home() {
   useEffect(() => {
     const fetchVisitors = async () => {
       try {
-        await fetch(`${API_URL}/visitors`, {
+        // Pertama: POST untuk mencatat visitor baru
+        const postRes = await fetch(`${API_URL}/visitors`, {
           method: "POST",
           headers: {
+            "Content-Type": "application/json",
             Accept: "*/*",
           },
         });
 
-        const res = await fetch(`${API_URL}/visitors`);
-        if (!res.ok) throw new Error("Failed to retrieve visitor data");
-        const data = await res.json();
+        if (!postRes.ok) {
+          throw new Error(`POST failed: ${postRes.status}`);
+        }
+
+        // Kedua: GET untuk ambil data visitor terbaru
+        const getRes = await fetch(`${API_URL}/visitors`, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (!getRes.ok) {
+          throw new Error(`GET failed: ${getRes.status}`);
+        }
+
+        const data = await getRes.json();
         setVisitors(data.total);
       } catch (err) {
         console.error("Error fetch visitors:", err);
