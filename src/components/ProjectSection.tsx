@@ -1,9 +1,18 @@
 "use client";
 
+import { projects } from "@/data/projects";
+import { Project } from "@/interface/Project";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ProjectSection() {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
     <section id="projects" className="bg-gray-100 dark:bg-gray-800 py-20 px-6">
       <div className="max-w-6xl mx-auto">
@@ -20,92 +29,73 @@ export default function ProjectSection() {
 
         {/* Grid Projects */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Project 1 */}
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <motion.div
-              className="bg-white dark:bg-gray-700 shadow-md rounded-lg overflow-hidden cursor-pointer"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
-              <Image
-                src="/project1.png"
-                alt="Project 1"
-                width={400}
-                height={200}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h4 className="font-bold text-gray-900 dark:text-gray-100">
-                  Sistem Buku Tamu BMKG
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Aplikasi web untuk mencatat kunjungan tamu, terintegrasi
-                  dengan Supabase & NestJS.
-                </p>
-              </div>
-            </motion.div>
-          </a>
+          {projects.map((project: Project, index: number) => {
+            const isExpanded = expandedIndex === index;
 
-          {/* Project 2 */}
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <motion.div
-              className="bg-white dark:bg-gray-700 shadow-md rounded-lg overflow-hidden cursor-pointer"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
-              <Image
-                src="/project2.png"
-                alt="Project 2"
-                width={400}
-                height={200}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h4 className="font-bold text-gray-900 dark:text-gray-100">
-                  Dashboard Admin
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Dashboard interaktif dengan statistik tamu & ekspor data
-                  PDF/Excel.
-                </p>
-              </div>
-            </motion.div>
-          </a>
+            return (
+              <motion.div
+                key={project.title}
+                layout
+                className="bg-white dark:bg-gray-700 shadow-md rounded-lg overflow-hidden"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.03, y: -4 }}
+              >
+                {/* Klik gambar / title → link */}
+                <a
+                  href={project.link ?? "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={200}
+                    className="w-full h-40 object-cover"
+                  />
+                </a>
 
-          {/* Project 3 */}
-          <a href="" target="_blank" rel="noopener noreferrer">
-            <motion.div
-              className="bg-white dark:bg-gray-700 shadow-md rounded-lg overflow-hidden cursor-pointer"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
-              <Image
-                src="/project3.png"
-                alt="Project 3"
-                width={400}
-                height={200}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h4 className="font-bold text-gray-900 dark:text-gray-100">
-                  Flight & Weather Sync
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  API sinkronisasi data pesawat & cuaca berbasis Supabase +
-                  NestJS.
-                </p>
-              </div>
-            </motion.div>
-          </a>
+                <div className="p-4">
+                  <a
+                    href={project.link ?? "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <h4 className="font-bold text-gray-900 dark:text-gray-100">
+                      {project.title}
+                    </h4>
+                  </a>
+
+                  {/* Description */}
+                  <motion.p
+                    layout
+                    className={`text-sm text-gray-600 dark:text-gray-300 mt-2 ${
+                      isExpanded ? "line-clamp-none" : "line-clamp-3"
+                    }`}
+                  >
+                    {project.description}
+                  </motion.p>
+
+                  {/* Read more */}
+                  {project.description.length > 120 && (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleExpand(index);
+                      }}
+                      className="mt-2 text-sm font-medium text-blue-500 hover:text-blue-600 transition-colors"
+                    >
+                      {isExpanded ? "Read less" : "Read more"}
+                    </button>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Portfolio Marco",
-  description: "Portfolio sederhana dengan Next.js & TailwindCSS",
+  description: "Portfolio Marco Sihombing",
 };
 
 export default function RootLayout({

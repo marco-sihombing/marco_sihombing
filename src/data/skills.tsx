@@ -5,7 +5,6 @@ import {
   SiCodeigniter,
   SiCplusplus,
   SiCss3,
-  SiDocker,
   SiExpo,
   SiExpress,
   SiFirebase,
@@ -130,10 +129,10 @@ export const skills = [
   },
 
   // 🛠 DevOps
-  {
-    name: "Docker",
-    icon: <SiDocker className="text-blue-400 text-4xl mx-auto" />,
-  },
+  // {
+  //   name: "Docker",
+  //   icon: <SiDocker className="text-blue-400 text-4xl mx-auto" />,
+  // },
   {
     name: "Kubernetes",
     icon: <SiKubernetes className="text-blue-600 text-4xl mx-auto" />,

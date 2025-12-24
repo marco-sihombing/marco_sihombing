@@ -1,42 +1,42 @@
 export const experiences = [
   {
-    title: "Magang PT Simamaung",
+    title: "Internship at PT Simamaung",
     role: "Fullstack Developer",
-    period: "Feb 2024 - Jul 2024",
+    period: "Jan 2020 - Marc 2020",
     description:
-      "Mengembangkan backend service untuk sinkronisasi data cuaca & penerbangan.",
-    logo: "/bmkg.png",
+      "Creating a full-stack news portal website and soccer match results for the local soccer team from Bandung, Persib Bandung.",
+    logo: "/exps/simamaung.png",
   },
   {
     title: "Contract Employees",
     role: "Warehouse Quality Control",
-    period: "Feb 2024 - Jul 2024",
+    period: "Aug 2022 - July 2023",
     description:
-      "Mengembangkan backend service untuk sinkronisasi data cuaca & penerbangan.",
-    logo: "/bmkg.png",
+      "Working on a contract basis with the main job description of checking raw materials for making chocolate and packaging for wrapping chocolate.",
+    logo: "/exps/winco.png",
   },
   {
-    title: "Magang BMKG Bengkulu",
+    title: "Internship at BMKG Bengkulu",
     role: "Backend Developer",
-    period: "Feb 2024 - Jul 2024",
+    period: "Marc 2025 - July 2025",
     description:
-      "Mengembangkan backend service untuk sinkronisasi data cuaca & penerbangan.",
-    logo: "/bmkg.png",
+      "Create documentation and APIs using Nest JS and Supabase that are ready to use by front-end developers.",
+    logo: "/exps/logo_bmkg.png",
   },
   {
     title: "Freelance Project",
-    role: "Fullstack Developer",
-    period: "Agu 2024 - Sekarang",
+    role: "Backend Developer",
+    period: "July 2025 - Dec 2025",
     description:
-      "Membangun aplikasi web dengan Next.js dan NestJS untuk client startup.",
-    logo: "/freelance.png",
+      "Creating documentation and APIs using Nest JS and Supabase to build an education system.",
+    logo: "/exps/minilemon.png",
   },
   {
-    title: "Kampus UNJANI",
-    role: "Asisten Praktikum",
-    period: "2023",
+    title: "UNJANI Campus Lab Assistant",
+    role: "Laboratory Assistant",
+    period: "2023 - Now",
     description:
-      "Membimbing mahasiswa dalam praktikum basis data dan pemrograman web.",
-    logo: "/unjani.png",
+      "Becoming a lab assistant who helps lecturers in practical classes.",
+    logo: "/exps/if.png",
   },
 ];

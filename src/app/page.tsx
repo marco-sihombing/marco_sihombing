@@ -21,7 +21,7 @@ import {
   Mail,
 } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
@@ -31,7 +31,7 @@ import "swiper/css/pagination";
 
 export default function Home() {
   const [showNav, setShowNav] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
   const [overlay, setOverlay] = useState(false);
   const [visitors, setVisitors] = useState<number | null>(null);
 
@@ -44,20 +44,23 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setShowNav(false); // scroll down → hide
-      } else {
-        setShowNav(true); // scroll up → show
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 10) {
+        setShowNav(true);
+        return;
       }
-      setLastScrollY(window.scrollY);
+
+      setShowNav(currentScrollY < lastScrollY.current);
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
 
   useEffect(() => {
     // Disable klik kanan
