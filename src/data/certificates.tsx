@@ -2,6 +2,12 @@ import { Certificate } from "@/interface/Certificate";
 
 export const certificates: Certificate[] = [
   {
+    title: "Lab Assistant",
+    description:
+      "Supervising programming and application development laboratory sessions for Informatics students at UNJANI.",
+    images: ["/certs/unj1.jpg"],
+  },
+  {
     title: "Server Side",
     description: "Certificate to become a server side at BMKG Bengkulu",
     images: ["/certs/bmkg_2.png", "/certs/bmkg_3.png", "/certs/bmkg_1.png"],
