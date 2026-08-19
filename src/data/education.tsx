@@ -9,6 +9,6 @@ export const education: Education[] = [
   {
     school: "Ahmad Yani University",
     major: "Informatika",
-    period: "2022 - Present",
+    period: "2022 - 2026",
   },
 ];

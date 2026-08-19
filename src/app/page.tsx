@@ -168,8 +168,8 @@ export default function Home() {
     <main className="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
       <WelcomePopup
         message="Welcome"
-        description="Hopefully you find the worker you need."
-        autoClose={4000}
+        description="Let's connect and explore what we can build together."
+        autoClose={5000}
       />
 
       <noscript>
@@ -331,29 +331,44 @@ export default function Home() {
         {/* Content */}
         <div
           className="relative grid grid-cols-1 md:grid-cols-2 items-center 
-               max-w-6xl mx-auto w-full
-               px-6 sm:px-8 md:px-12 
-               gap-10 md:gap-16
-               pt-16 sm:pt-20 md:pt-0 
-               pb-28 sm:pb-32 md:pb-0"
+    max-w-6xl mx-auto w-full
+    px-6 sm:px-8 md:px-12 
+    gap-10 md:gap-16
+    pt-16 sm:pt-20 md:pt-0 
+    pb-28 sm:pb-32 md:pb-0
+    min-h-[80vh] md:min-h-[90vh]"
         >
           {/* Text Side */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center md:text-left flex flex-col items-center md:items-start"
+            className="text-center md:text-left flex flex-col items-center md:items-start space-y-4 md:space-y-6"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
+            {/* Badge/Status */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full text-xs font-medium text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              </span>
+              Open to Opportunities
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 sm:mb-6 leading-tight">
               Marco{" "}
-              <span className="text-blue-600 dark:text-blue-400">
+              <span className="text-blue-600 dark:text-blue-400 relative inline-block">
                 Sihombing
+                {/* Underline decoration */}
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hidden sm:block"></span>
               </span>
             </h2>
-            <p className="text-sm sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">
-              Backend Developer • Undergraduate
+
+            <p className="text-sm sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4 sm:mb-6 font-medium px-4 py-2 bg-gray-100/50 dark:bg-gray-700/30 rounded-lg backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/30">
+              Software Engineer | Backend-Focused
             </p>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
+
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 flex items-center gap-2 flex-wrap justify-center md:justify-start">
+              <span className="text-gray-500 dark:text-gray-400"></span>
               <TypeAnimation
                 sequence={[
                   "Backend Developer",
