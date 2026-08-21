@@ -10,7 +10,7 @@ import WelcomePopup from "@/components/WelcomePopup";
 import { motion } from "framer-motion";
 import {
   ArrowDown,
-  ArrowUp,
+  // ArrowUp,
   Award,
   Briefcase,
   Code,
@@ -39,9 +39,9 @@ export default function Home() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "");
 
   // scroll to top / bottom
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const scrollToBottom = () =>
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  // const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  // const scrollToBottom = () =>
+  //   window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 
   const [headerHeight, setHeaderHeight] = useState(0);
 

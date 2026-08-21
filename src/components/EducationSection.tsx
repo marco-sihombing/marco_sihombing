@@ -3,7 +3,7 @@
 import { education } from "@/data/education";
 import { Education } from "@/interface/Education";
 import { motion } from "framer-motion";
-import { GraduationCap, Calendar, Award, MapPin } from "lucide-react";
+import { Calendar, Award, MapPin } from "lucide-react";
 
 function TimelineItem({ edu, isLeft }: { edu: Education; isLeft: boolean }) {
   return (

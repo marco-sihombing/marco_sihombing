@@ -6,7 +6,7 @@ import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { skills } from "@/data/skills";
-import { Code2, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export default function SkillsSection() {
   return (

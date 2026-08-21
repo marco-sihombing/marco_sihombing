@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Code, Brain, Rocket } from "lucide-react";
+import { Code, Brain, Rocket } from "lucide-react";
 
 export default function AboutSection() {
   return (

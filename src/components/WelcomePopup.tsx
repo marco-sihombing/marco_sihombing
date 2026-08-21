@@ -2,7 +2,7 @@
 
 import { Welcome } from "@/interface/Welcome";
 import { motion } from "framer-motion";
-import { X, Sparkles, PartyPopper, Hand } from "lucide-react";
+import { X, Sparkles, Hand } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function WelcomePopup({

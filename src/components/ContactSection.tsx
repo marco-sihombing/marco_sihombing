@@ -90,7 +90,7 @@ export default function ContactSection() {
             Contact Me
           </h3>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Have a question? Let's connect!
+            Have a question? Let&apos;s connect!
           </p>
         </motion.div>
 
