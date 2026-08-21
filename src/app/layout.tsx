@@ -3,8 +3,9 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio Marco",
-  description: "Portfolio Marco Sihombing",
+  title: "Marco Sihombing | Software Engineer",
+  description:
+    "Backend-focused Software Engineer building scalable APIs and reliable web applications.",
 };
 
 export default function RootLayout({

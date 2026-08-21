@@ -22,17 +22,17 @@ export default function ExperienceSection() {
 
       {/* Title */}
       <motion.h3
-        className="text-3xl sm:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white text-center md:text-left tracking-tight"
+        className="text-3xl sm:text-4xl font-extrabold mb-2 text-gray-900 dark:text-white tracking-tight text-center"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        Work & Internship Experience
+        Projects
       </motion.h3>
 
       <motion.div
-        className="mx-auto md:mx-0 w-20 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mb-12"
+        className="mx-auto w-20 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mb-12"
         initial={{ opacity: 0, scaleX: 0 }}
         whileInView={{ opacity: 1, scaleX: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}

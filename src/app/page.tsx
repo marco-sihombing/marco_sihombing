@@ -19,6 +19,7 @@ import {
   GraduationCap,
   Home as HomeIcon,
   Mail,
+  Phone,
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -42,16 +43,42 @@ export default function Home() {
   const scrollToBottom = () =>
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      const header = document.querySelector("header");
+      if (header) {
+        setHeaderHeight(header.offsetHeight);
+      }
+    };
+
+    updateHeaderHeight();
+    window.addEventListener("resize", updateHeaderHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateHeaderHeight);
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
+      // Selalu tampilkan di posisi paling atas
       if (currentScrollY < 10) {
         setShowNav(true);
+        lastScrollY.current = currentScrollY;
         return;
       }
 
-      setShowNav(currentScrollY < lastScrollY.current);
+      // Sembunyi saat scroll ke bawah, muncul saat scroll ke atas
+      if (currentScrollY < lastScrollY.current) {
+        setShowNav(true);
+      } else {
+        setShowNav(false);
+      }
+
       lastScrollY.current = currentScrollY;
     };
 
@@ -85,7 +112,7 @@ export default function Home() {
       if (e.key === "PrintScreen") {
         setOverlay(true);
         // Hilangkan overlay setelah beberapa detik
-        setTimeout(() => setOverlay(false), 2000);
+        setTimeout(() => setOverlay(false), 0);
       }
     };
 
@@ -208,14 +235,16 @@ export default function Home() {
 
       {/* Header (desktop only) */}
       <header
-        className={`hidden md:flex justify-between items-center px-10 py-6 
-  bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg sticky top-0 z-50 
-  transition-all duration-500 ease-in-out shadow-md
-  ${
-    showNav
-      ? "translate-y-0 opacity-100 shadow-lg"
-      : "-translate-y-full opacity-0"
-  }`}
+        className={`hidden md:flex justify-between items-center px-10 py-6
+    bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg
+    fixed top-0 left-0 right-0 z-50
+    transition-all duration-500 ease-in-out
+    shadow-md
+    ${
+      showNav
+        ? "translate-y-0 opacity-100 shadow-lg"
+        : "-translate-y-full opacity-0"
+    }`}
       >
         {/* Logo */}
         <h1 className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-transparent">
@@ -239,17 +268,18 @@ export default function Home() {
               className="relative group transition-colors duration-300 hover:text-blue-500"
             >
               {item.label}
-              {/* animasi underline */}
-              <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+
+              {/* Animasi underline */}
+              <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-500 transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
 
-          {/* Button CV (lebih kecil & proporsional) */}
+          {/* Button CV */}
           <a
             href="/pdf/Marco-Sihombing.pdf"
-            className="px-3 py-1.5 rounded-md bg-gradient-to-r from-blue-600 to-purple-600 
-      text-white font-medium shadow-md hover:shadow-lg hover:scale-105 
-      active:scale-95 transition-transform duration-300 text-sm"
+            className="px-3 py-1.5 rounded-md bg-gradient-to-r from-blue-600 to-purple-600
+        text-white font-medium shadow-md hover:shadow-lg hover:scale-105
+        active:scale-95 transition-transform duration-300 text-sm"
           >
             Download CV
           </a>
@@ -303,7 +333,7 @@ export default function Home() {
 
       {/* Scroll Buttons */}
       <div className="fixed bottom-24 right-5 flex flex-col gap-3 z-50">
-        <button
+        {/* <button
           onClick={scrollToTop}
           className="p-3 rounded-full 
                bg-blue-600 text-white shadow-lg hover:bg-blue-700 
@@ -311,20 +341,77 @@ export default function Home() {
                transition-colors duration-300"
         >
           <ArrowUp size={20} />
-        </button>
-        <button
-          onClick={scrollToBottom}
-          className="p-3 rounded-full 
-               bg-blue-600 text-white shadow-lg hover:bg-blue-700 
-               dark:bg-blue-500 dark:hover:bg-blue-400 
-               transition-colors duration-300"
+        </button> */}
+        <a
+          href="#contact"
+          className="
+    group relative flex items-center justify-center
+    h-14 w-14 hover:w-48
+    rounded-full
+    bg-blue-600
+    text-white
+    shadow-2xl shadow-blue-600/40
+    hover:bg-blue-700
+    hover:shadow-blue-600/50
+    dark:bg-blue-500
+    dark:hover:bg-blue-400
+    transition-all duration-700 ease-in-out
+    overflow-hidden
+    hover:scale-105
+    border-2 border-white/20
+    hover:border-white/40
+  "
+          aria-label="Let's Connect"
         >
-          <ArrowDown size={20} />
-        </button>
+          {/* Text */}
+          <span
+            className="
+      absolute left-5
+      opacity-0 translate-x-6
+      group-hover:opacity-100
+      group-hover:translate-x-0
+      transition-all duration-700 ease-out
+      whitespace-nowrap
+      text-sm font-bold tracking-wider
+      text-white
+      drop-shadow-lg
+    "
+          >
+            Let&apos;s Connect
+          </span>
+
+          {/* Phone Icon */}
+          <Phone
+            size={22}
+            className="
+      absolute right-4
+      transition-all duration-700 ease-out
+      group-hover:scale-125
+      group-hover:translate-y-[-2px]
+      group-hover:rotate-[-15deg]
+      drop-shadow-lg
+    "
+          />
+
+          {/* Glow effect */}
+          <span
+            className="
+      absolute inset-0 rounded-full
+      opacity-0 group-hover:opacity-100
+      bg-white/10
+      transition-all duration-700
+      group-hover:scale-110
+      blur-sm
+    "
+          />
+        </a>
       </div>
 
       {/* Hero */}
-      <section className="relative min-h-[calc(100vh-3.5rem)] flex items-center overflow-hidden">
+      <section
+        className="relative min-h-[calc(100vh-3.5rem)] flex items-center overflow-hidden"
+        style={{ paddingTop: `${headerHeight}px` }}
+      >
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-blue-50 via-white to-transparent dark:from-gray-900 dark:via-gray-800" />
 

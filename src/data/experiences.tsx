@@ -21,7 +21,7 @@ export const experiences = [
     period: "Marc 2025 - July 2025",
     description:
       "Create documentation and APIs using Nest JS and Supabase that are ready to use by front-end developers.",
-    logo: "/exps/logo_bmkg.png",
+    logo: "/exps/Logo_BMKG.png",
   },
   {
     title: "Freelance Project",

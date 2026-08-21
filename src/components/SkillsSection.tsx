@@ -28,14 +28,15 @@ export default function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-8"
+          className="mb-8 text-center"
         >
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center justify-center gap-3 mb-2">
             <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100">
               Tech Stack
             </h3>
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400 ml-11">
+
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             Technologies and tools I work with
           </p>
         </motion.div>
