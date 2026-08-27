@@ -13,7 +13,7 @@ export const projects: Project[] = [
     description:
       "Documentation displaying real-time flight and weather information. Flight data is obtained from OpenSky, weather and radar data from OpenWeather, and CMAX/SSA/TITAN layers from BMKG SIDARMA. All data is integrated and visualized using Leaflet, with a special endpoint for Analysis Mode.",
     image: "/projs/met-flight-radar.png",
-    link: "",
+    link: "https://fe-met-flight-radar.bhinneka-production.my.id/",
   },
   {
     title: "CABDIN DIKWIL 2 REJANG LEBONG API Documentation",
