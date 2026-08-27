@@ -18,6 +18,7 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiNumpy,
+  SiOdoo,
   SiPandas,
   SiPhp,
   SiPostgresql,
@@ -100,6 +101,10 @@ export const skills = [
   {
     name: "NestJS",
     icon: <SiNestjs className="text-red-500 text-4xl mx-auto" />,
+  },
+  {
+    name: "Odoo",
+    icon: <SiOdoo className="text-purple-600 text-4xl mx-auto" />,
   },
 
   // 📊 Databases

@@ -28,7 +28,7 @@ export default function ExperienceSection() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        Projects
+        Experience
       </motion.h3>
 
       <motion.div
