@@ -5,6 +5,7 @@ import {
   SiCodeigniter,
   SiCplusplus,
   SiCss3,
+  SiDotnet,
   SiExpo,
   SiExpress,
   SiFirebase,
@@ -101,6 +102,10 @@ export const skills = [
   {
     name: "NestJS",
     icon: <SiNestjs className="text-red-500 text-4xl mx-auto" />,
+  },
+  {
+    name: ".NET",
+    icon: <SiDotnet className="text-purple-600 text-4xl mx-auto" />,
   },
   {
     name: "Odoo",
