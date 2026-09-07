@@ -27,6 +27,7 @@ import {
   SiPython,
   SiReact,
   SiScikitlearn,
+  SiSpring,
   SiSupabase,
   SiTailwindcss,
   SiTensorflow,
@@ -102,6 +103,10 @@ export const skills = [
   {
     name: "NestJS",
     icon: <SiNestjs className="text-red-500 text-4xl mx-auto" />,
+  },
+  {
+    name: "Spring Boot",
+    icon: <SiSpring className="text-green-600 text-4xl mx-auto" />,
   },
   {
     name: ".NET",
