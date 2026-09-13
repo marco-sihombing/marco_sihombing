@@ -115,6 +115,45 @@ export default function ProjectSection() {
               </motion.div>
             );
           })}
+
+          <motion.a
+            href="https://github.com/marco-sihombing"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: projects.length * 0.15 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02, y: -6 }}
+            className="group relative flex flex-col items-center justify-center text-center bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl border border-gray-200/60 dark:border-gray-700/60 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 overflow-hidden ring-1 ring-gray-100 dark:ring-gray-800 p-8 min-h-[280px]"
+          >
+            {/* Subtle gradient overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 transition-all duration-500 pointer-events-none" />
+
+            {/* Icon GitHub */}
+            <div className="relative z-10 mb-5 flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform duration-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-8 h-8 text-white"
+              >
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </div>
+
+            {/* Text */}
+            <h4 className="relative z-10 font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+              Further Exploration
+            </h4>
+            <p className="relative z-10 text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-3 max-w-[240px]">
+              Visit my GitHub repository to explore a complete collection of
+              projects, experiments, and other open-source contributions.
+            </p>
+            <span className="relative z-10 mt-5 text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
+              See More →
+            </span>
+          </motion.a>
         </div>
       </div>
     </section>
