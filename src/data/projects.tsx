@@ -29,4 +29,11 @@ export const projects: Project[] = [
     image: "/projs/sireman.png",
     link: "https://github.com/marco-sihombing/sireman",
   },
+  {
+    title: "Personal Finance Management System",
+    description:
+      "A full-stack personal finance application built using ASP.NET Core, PostgreSQL, and Next.js. It features authentication, Google account and transaction management, budgeting, financial goal setting, and balance tracking, though it does not integrate with banks or e-wallets.",
+    image: "/projs/PF.png",
+    link: "https://github.com/marco-sihombing/personal-finance-web",
+  },
 ];
