@@ -79,12 +79,15 @@ export default function AboutSection() {
             >
               I am a{" "}
               <span className="font-semibold text-blue-600 dark:text-blue-400">
-                Backend Developer
+                Backend-Focused Full-Stack Developer
               </span>{" "}
-              focused on application development, database management, and
-              system performance optimization for greater efficiency and
-              scalability. With a basic understanding of frontend development, I
-              can collaborate in building well-integrated applications.
+              with a primary focus on backend application development, database
+              management, API development, and system performance optimization
+              to build efficient, reliable, and scalable systems. I also have
+              hands-on experience in frontend development using Next.js and
+              TypeScript, allowing me to develop and integrate applications
+              across the full stack while maintaining my primary focus on
+              backend development.
             </motion.p>
           </motion.div>
 
@@ -105,7 +108,7 @@ export default function AboutSection() {
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              In addition, I also have an interest in{" "}
+              I am also interested in{" "}
               <span className="font-semibold text-blue-600 dark:text-blue-400">
                 Machine Learning
               </span>{" "}
@@ -113,8 +116,12 @@ export default function AboutSection() {
               <span className="font-semibold text-blue-600 dark:text-blue-400">
                 Data Mining
               </span>
-              , which enriches my knowledge in processing data to generate
-              valuable insights.
+              , which allows me to explore data processing and analytical
+              approaches to gain valuable insights. I am always enthusiastic
+              about learning new technologies and taking on challenges that help
+              me improve my technical skills. With an analytical mindset and a
+              problem-solving approach, I aim to contribute to development teams
+              by building reliable and well-integrated applications.
             </motion.p>
           </motion.div>
 
