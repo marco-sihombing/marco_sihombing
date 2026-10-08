@@ -36,4 +36,11 @@ export const projects: Project[] = [
     image: "/projs/PF.png",
     link: "https://github.com/marco-sihombing/personal-finance-web",
   },
+  {
+    title: "KoperasiKu (Coming Soon)",
+    description:
+      "A cooperative management system currently in development. The backend is being built with Spring Boot (Java 21 LTS) and PostgreSQL 18, while the frontend uses Next.js. Designed to handle member management, savings and loans, and cooperative transaction reporting. This project is still a work in progress — stay tuned!",
+    image: "/projs/KoperasiKu.png",
+    link: "https://github.com/marco-sihombing/koperasiku-api",
+  },
 ];
