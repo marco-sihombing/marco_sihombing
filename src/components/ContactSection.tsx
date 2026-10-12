@@ -106,7 +106,7 @@ export default function ContactSection() {
             <div className="grid grid-cols-2 gap-3">
               {/* WhatsApp */}
               <motion.a
-                href="https://wa.me/089664686245"
+                href="https://wa.me/6289664686245"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center gap-1 p-3 bg-white dark:bg-gray-700 rounded-xl shadow hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-600"

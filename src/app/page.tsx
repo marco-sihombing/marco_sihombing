@@ -503,7 +503,7 @@ export default function Home() {
                 <FiLinkedin />
               </a>
               <a
-                href="https://wa.me/089664686245"
+                href="https://wa.me/6289664686245"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-green-500 transition-colors duration-300"
@@ -618,7 +618,7 @@ export default function Home() {
               <FiMail />
             </a>
             <a
-              href="https://wa.me/089664686245"
+              href="https://wa.me/6289664686245"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-green-600 transition-colors"
