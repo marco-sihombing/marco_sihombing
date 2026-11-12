@@ -590,60 +590,79 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300 py-8 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-4">
-          {/* Info */}
-          <p className="text-sm text-center md:text-left">
-            © {new Date().getFullYear()} Marco Sihombing. All rights reserved.
-          </p>
-
-          {/* Visitor counter */}
-          {visitors !== null && (
-            <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
-              <span className="text-lg">👥</span>
-              <span>Total Visitors:</span>
-              <span className="font-semibold text-gray-900 dark:text-gray-100">
-                {visitors.toLocaleString()}
+      <footer className="relative bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 text-gray-700 dark:text-gray-300 py-10 transition-colors duration-300 border-t border-gray-200 dark:border-gray-800">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4">
+            {/* Brand & Copyright */}
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <span className="text-base font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
+                Marco Sihombing
               </span>
-            </p>
-          )}
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                © {new Date().getFullYear()} All rights reserved.
+              </p>
+            </div>
 
-          {/* Icons */}
-          <div className="flex space-x-5 text-lg">
-            <a
-              href="mailto:marcosihombing72@gmail.com"
-              className="hover:text-blue-500 transition-colors"
-              aria-label="Email"
-            >
-              <FiMail />
-            </a>
-            <a
-              href="https://wa.me/6289664686245"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-green-600 transition-colors"
-              aria-label="WhatsApp"
-            >
-              <FaWhatsapp />
-            </a>
-            <a
-              href="https://github.com/marco-sihombing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-700 dark:hover:text-white transition-colors"
-              aria-label="GitHub"
-            >
-              <FiGithub />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/marcosihombing/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-700 transition-colors"
-              aria-label="LinkedIn"
-            >
-              <FiLinkedin />
-            </a>
+            {/* Visitor counter */}
+            {visitors !== null && (
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-xs text-gray-600 dark:text-gray-400">
+                  Visitors
+                </span>
+                <span className="text-sm font-bold text-gray-900 dark:text-gray-100">
+                  {visitors.toLocaleString()}
+                </span>
+              </div>
+            )}
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-2">
+              {[
+                {
+                  href: "mailto:marcosihombing72@gmail.com",
+                  icon: <FiMail />,
+                  label: "Email",
+                  hover: "hover:bg-blue-500 hover:text-white",
+                },
+                {
+                  href: "https://wa.me/6289664686245",
+                  icon: <FaWhatsapp />,
+                  label: "WhatsApp",
+                  hover: "hover:bg-green-500 hover:text-white",
+                },
+                {
+                  href: "https://github.com/marco-sihombing",
+                  icon: <FiGithub />,
+                  label: "GitHub",
+                  hover: "hover:bg-gray-800 hover:text-white",
+                },
+                {
+                  href: "https://www.linkedin.com/in/marcosihombing/",
+                  icon: <FiLinkedin />,
+                  label: "LinkedIn",
+                  hover: "hover:bg-blue-700 hover:text-white",
+                },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    social.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  aria-label={social.label}
+                  className={`p-2.5 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${social.hover}`}
+                >
+                  <span className="text-base flex">{social.icon}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </footer>
