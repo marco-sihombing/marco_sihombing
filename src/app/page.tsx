@@ -152,9 +152,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const fetchVisitors = async () => {
+    if (!API_URL) return;
+
+    const recordVisit = async () => {
       try {
-        // Pertama: POST untuk mencatat visitor baru
         const postRes = await fetch(`${API_URL}/visitors`, {
           method: "POST",
           headers: {
@@ -166,8 +167,13 @@ export default function Home() {
         if (!postRes.ok) {
           throw new Error(`POST failed: ${postRes.status}`);
         }
+      } catch (err) {
+        console.error("Error recording visit:", err);
+      }
+    };
 
-        // Kedua: GET untuk ambil data visitor terbaru
+    const fetchTotal = async () => {
+      try {
         const getRes = await fetch(`${API_URL}/visitors`, {
           method: "GET",
           headers: {
@@ -186,9 +192,17 @@ export default function Home() {
       }
     };
 
-    if (API_URL) {
-      fetchVisitors();
-    }
+    const init = async () => {
+      await recordVisit();
+      await fetchTotal();
+    };
+
+    init();
+
+    const intervalId = setInterval(fetchTotal, 5000);
+
+    // 5. Bersihkan interval saat komponen unmount
+    return () => clearInterval(intervalId);
   }, [API_URL]);
 
   return (
